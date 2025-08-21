@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomad Art Columbus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5009c3;
+            --secondary: #2e0372; 
+            --light: #e2dcff; 
+            --extra-light: #f3f1ff; 
+            --dark: #121212;
+            --text: #333333;
+            --text-light: #e2dcff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.8; /* Increased line height for better readability */
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url("images/banner.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 70vh; /* Increased height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 30px; /* Increased padding */
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem; /* Larger text */
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 15px 35px; /* Larger button */
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 30px; /* Increased padding */
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px; /* More space below title */
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem; /* Larger section titles */
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px; /* More space below */
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Longer underline */
+            height: 4px; /* Thicker underline */
+            background-color: var(--primary);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Wider cards */
+            gap: 40px; /* More space between cards */
+            margin: 60px 0; /* More space around grid */
+        }
+        
+        .card {
+            background-color: var(--extra-light);
+            border-radius: 12px; /* More rounded corners */
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Deeper shadow */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px); /* More pronounced lift */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .card-img {
+            height: 250px; /* Taller images */
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 30px; /* More padding in cards */
+        }
+        
+        .card-content h3 {
+            font-size: 1.6rem; /* Larger card titles */
+            margin-bottom: 20px; /* More space below title */
+            color: var(--secondary);
+        }
+        
+        .card-content p {
+            margin-bottom: 25px; /* More space between paragraphs */
+            font-size: 1.1rem; /* Slightly larger text */
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px; /* More space between images */
+            margin: 60px 0; /* More space around gallery */
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px; /* More space between text and image */
+            margin: 60px 0; /* More space around section */
+        }
+        
+        .about-text {
+            flex: 1;
+            padding: 30px 0; /* Vertical padding */
+        }
+        
+        .about-text h3 {
+            font-size: 2rem; /* Larger heading */
+            margin-bottom: 30px; /* More space below heading */
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 25px; /* More space between paragraphs */
+            font-size: 1.1rem; /* Slightly larger text */
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 15px; /* More rounded corners */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        
+        /* Events Calendar */
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 60px 0; /* More space around calendar */
+            background-color: var(--extra-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .calendar th {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            padding: 20px; /* More padding in cells */
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .calendar td {
+            padding: 20px; /* More padding in cells */
+            text-align: center;
+            border: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        
+        .event-day {
+            background-color: rgba(100, 149, 237, 0.1);
+            font-weight: bold;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .event-day::after {
+            content: '•';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        /* Contact Form */
+        .contact-container {
+            display: flex;
+            gap: 60px; /* More space between form and info */
+            margin: 60px 0; /* More space around container */
+        }
+
+        iframe {
+            width: 100%;
+            height: 1000px;         /* adjust depending on your form’s length */
+            border: none;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--extra-light);
+            padding: 80px; /* More padding */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: auto;
+            max-height: 1282px;
+        }
+        
+        .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+        
+        .form-group {
+            margin-bottom: 25px; /* More space between fields */
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 12px; /* More space below label */
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px; /* More padding in inputs */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1.1rem;
+        }
+        
+        .form-group textarea {
+            height: 200px; /* Taller textarea */
+            resize: vertical;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .info-card {
+            background-color: var(--extra-light);
+            padding: 40px; /* More padding */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px; /* More space between cards */
+        }
+        
+        .info-card h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .info-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px; /* Longer underline */
+            height: 3px; /* Thicker underline */
+            background-color: var(--primary);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px; /* More space between items */
+        }
+        
+        .info-item i {
+            color: var(--primary);
+            margin-right: 20px; /* More space before text */
+            font-size: 1.5rem; /* Larger icons */
+            margin-top: 5px;
+        }
+        
+        .info-item-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        
+        .info-item-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            padding: 80px 0 40px; /* More padding */
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px; /* More padding */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px; /* More space between columns */
+        }
+        
+        .footer-col h3 {
+            font-size: 1.8rem; /* Larger heading */
+            margin-bottom: 30px; /* More space below heading */
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px; /* Longer underline */
+            height: 3px; /* Thicker underline */
+            background-color: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px; /* More space between paragraphs */
+            font-size: 1.1rem; /* Slightly larger text */
+            line-height: 1.8;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px; /* More space between links */
+        }
+        
+        .footer-col ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px; /* More space between icons */
+            margin-top: 30px; /* More space above icons */
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; /* Larger social icons */
+            height: 50px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.5rem; /* Larger icons */
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-8px); /* More pronounced lift */
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 50px; /* More space above copyright */
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 15px 15px;
+            }
+            
+            .hero {
+                height: 50vh;
+                margin-bottom: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 60px 20px;
+            }
+            
+            .footer-container {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Nomad<span>Art</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Only on Home) -->
+    <div id="hero-container"></div>
+
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Content will be dynamically loaded here -->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Nomad Art Columbus</h3>
+                <p>A teen-run nonprofit organization dedicated to providing a platform for young creatives in Columbus. We host regular events showcasing local talent in art, music, and entrepreneurship.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/nomadartcolumbus" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/nomadartcolumbus" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/nomadartcolumbus" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a id="homeLink2" href="#home">Home</a></li>
+                    <li><a id="aboutLink2" href="#about">About Us</a></li>
+                    <li><a id="eventsLink2" href="#events">Upcoming Events</a></li>
+                    <li><a id="contactLink2" href="#contact">Get Involved</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info-item-content">
+                        <h4>Email</h4>
+                        <p>info@nomadartcolumbus.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="info-item-content">
+                        <h4>Phone</h4>
+                        <p>(614) 555-7890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Nomad Art Columbus IN. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load home page by default
+            loadPage('home');
+            
+            // Set up navigation
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('href').substring(1);
+                    loadPage(page);
+                    window.scrollTo(0, 0);
+                    
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        function setupFooterButtons() {
+            const homeLink2 = document.getElementById("homeLink2");
+            const aboutLink2 = document.getElementById("aboutLink2");
+            const eventsLink2 = document.getElementById("eventsLink2");
+            const contactLink2 = document.getElementById("contactLink2");
+
+            homeLink2.addEventListener('click', function() {
+                loadPage("home");
+            });
+
+            aboutLink2.addEventListener('click', function() {
+                loadPage("about");
+            });
+
+            eventsLink2.addEventListener('click', function() {
+                loadPage("events");
+            });
+
+            contactLink2.addEventListener('click', function() {
+                loadPage("contact");
+            });
+        }
+
+        function setupHomeButtons() {
+            const aboutButton2 = document.getElementById("aboutButton2");
+
+            const eventsButton1 = document.getElementById("eventsButton1");
+            const eventsButton2 = document.getElementById("eventsButton2");
+
+            aboutButton2.addEventListener('click', function() {
+                loadPage("about")
+            });
+
+            eventsButton1.addEventListener('click', function() {
+                loadPage("events")
+            });
+
+            eventsButton2.addEventListener('click', function() {
+                loadPage("events")
+            });
+        }
+
+        function setupAboutButtons() {
+            const contactButton1 = document.getElementById("contactButton1");
+
+            const contactButton2 = document.getElementById("contactButton2");
+
+            contactButton1.addEventListener('click', function() {
+                loadPage("contact")
+            });
+
+            contactButton2.addEventListener('click', function() {
+                loadPage("contact")
+            });
+        }
+
+        function setupEventButtons() {
+            const contactButton3 = document.getElementById("contactButton3");
+
+            contactButton3.addEventListener('click', function() {
+                loadPage("contact")
+            });
+        }
+        
+        function loadPage(page) {
+            const contentDiv = document.getElementById('content');
+            const heroContainer = document.getElementById('hero-container');
+            
+            // Clear hero section if not on home page
+            if (page !== 'home') {
+                heroContainer.innerHTML = '';
+            }
+            
+            switch(page) {
+                case 'home':
+                    heroContainer.innerHTML = `
+                        <section class="hero">
+                            <div class="hero-content">
+                                <h1>Empowering Teen Creativity</h1>
+                                <p>A teen-run platform for artists, musicians, and vendors to showcase their talents in Columbus</p>
+                                <div style="margin-top: 40px;">
+                                    <a id="aboutButton2" class="btn">Our Story</a>
+                                    <a id="eventsButton1" class="btn" style="margin-left: 20px; background-color: var(--light); border-color: var(--light); color: var(--secondary);">Upcoming Events</a>
+                                </div>
+                            </div>
+                        </section>
+                    `;
+                    
+                    contentDiv.innerHTML = `
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>What is Nomad?</h2>
+                                <p>Discover the vibrant community of young creatives in Columbus</p>
+                            </div>
+                            
+                            <div class="about-content">
+                                <div class="about-text">
+                                    <p>Nomad Art Columbus is a groundbreaking, teen-run initiative that has been transforming the local arts scene since 2021. What began as a small gathering of passionate high school artists has blossomed into a thriving community event that attracts hundreds of attendees each month.</p>
+                                    
+                                    <p>At Nomad, we believe that creativity shouldn't be limited by age or financial barriers. Our events provide a completely free platform for young artists, musicians, and entrepreneurs to showcase their talents, gain exposure, and connect with like-minded individuals.</p>
+                                    
+                                    <p>What makes Nomad truly special is that every aspect - from planning to execution - is handled by a dedicated team of teenagers. This creates an authentic space where young creatives can express themselves freely and develop valuable leadership skills.</p>
+                                </div>
+                                
+                                <div class="about-image">
+                                    <img src="images/nomad.jpg" alt="nomad">
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="container" style="background-color: var:(--extra-light); padding: 80px 30px;">
+                            <div class="section-title">
+                                <h2>What Happens at Nomad?</h2>
+                                <p>Experience the vibrant energy of our community events</p>
+                            </div>
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="images/live_music.jpg" alt="live_music">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Live Performances</h3>
+                                        <p>Our stage comes alive with the sounds of up-and-coming teen musicians. From indie rock bands to solo singer-songwriters, we showcase a diverse range of musical talent.</p>
+                                        <p>Each event features 5-7 performers with 20-30 minute sets, giving them valuable stage experience and exposure to new audiences.</p>
+                                        <p>Past performers have gone on to play at local festivals and even record their first albums!</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="images/art_display.jpg" alt="art_display">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Art Exhibitions</h3>
+                                        <p>Our gallery spaces feature rotating exhibitions from local young artists. We display paintings, sculptures, photography, digital art, and mixed media installations.</p>
+                                        <p>Artists can sell their work with no commission taken by Nomad - 100% of proceeds go directly to the creators.</p>
+                                        <p>We also host live art demonstrations where attendees can watch pieces being created in real time.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="images/vendor_market.jpg" alt="vendor_market">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Vendor Market</h3>
+                                        <p>The Nomad Market features 20-30 teen-run businesses selling handmade goods, clothing, jewelry, art prints, and other creative products.</p>
+                                        <p>Vendor spaces are completely free, with priority given to first-time participants to give everyone a chance to showcase their work.</p>
+                                        <p>Many of our vendors have grown their businesses significantly through exposure at Nomad events.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="container" style="background-color: var(--light); padding: 80px 30px;">
+                            <div class="section-title">
+                                <h2>By the Numbers</h2>
+                                <p>The impact of our teen-run organization</p>
+                            </div>
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card-content" style="text-align: center;">
+                                        <h3 style="font-size: 3.5rem; color: var(--primary); margin-bottom: 10px;">32</h3>
+                                        <p style="font-size: 1.3rem;">Events hosted since 2021</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-content" style="text-align: center;">
+                                        <h3 style="font-size: 3.5rem; color: var(--primary); margin-bottom: 10px;">450+</h3>
+                                        <p style="font-size: 1.3rem;">Teen artists showcased</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-content" style="text-align: center;">
+                                        <h3 style="font-size: 3.5rem; color: var(--primary); margin-bottom: 10px;">100%</h3>
+                                        <p style="font-size: 1.3rem;">Free for participants and attendees</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Gallery</h2>
+                                <p>Memories from our past events</p>
+                            </div>
+                            
+                            <div class="gallery">
+                                <div class="gallery-item">
+                                    <img src="images/gallery_1.jpg" alt="gallery_1">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_2.jpg" alt="gallery_2">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_3.jpg" alt="gallery_3">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_4.jpg" alt="gallery_4">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_5.jpg" alt="gallery_5">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_6.jpg" alt="gallery_6">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_7.jpg" alt="gallery_7">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_8.jpg" alt="gallery_8">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="images/gallery_9.jpg" alt="gallery_9">
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 50px;">
+                                <a id="eventsButton2" class="btn">View All Events</a>
+                                <a href="https://drive.google.com/drive/folders/1ssw8v5HgoeXblv3g_iqcwTRhd-E4t7E-" target="_blank" class="btn" style="margin-left: 20px; background-color: transparent; border-color: var(--secondary); color: var(--secondary);">Full Photo Gallery</a>
+                            </div>
+                        </section>
+                    `;
+                    setupHomeButtons();
+                    setupFooterButtons();
+                    break;
+                    
+                case 'about':
+                    contentDiv.innerHTML = `
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Our Story</h2>
+                                <p>How a group of passionate teens created Columbus' premier youth arts platform</p>
+                            </div>
+                            
+                            <div class="about-content">
+                                <div class="about-text">
+                                    <h3>By Teens, For Teens</h3>
+                                    <p>Nomad Art Columbus was founded in 2021 by a group of five high school students who were frustrated by the lack of opportunities for young creatives in our city. What began as a small pop-up art show in a local park has grown into a thriving community event that attracts hundreds of attendees each month.</p>
+                                    
+                                    <p>Our founders - Maya, Jamal, Sofia, Eli, and Priya - pooled their lunch money to buy supplies for the first event. Today, we operate with support from local businesses and arts organizations, but we remain committed to our original mission: creating accessible opportunities for teen artists.</p>
+                                    
+                                    <h3 style="margin-top: 40px;">Our Mission</h3>
+                                    <p>We believe that financial barriers shouldn't prevent talented young people from sharing their work. Unlike traditional art shows and music venues, Nomad never charges participation fees. Our events are completely free for both artists and attendees.</p>
+                                    
+                                    <p>We're particularly focused on supporting artists from underserved communities who might not otherwise have access to exhibition spaces or performance opportunities.</p>
+                                    
+                                    <div style="margin-top: 40px;">
+                                        <a id="contactButton1" class="btn">Get Involved</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="about-image">
+                                    <img src="images/our_team.jpg" alt="our_team">
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="container" style="background-color: var(--light); padding: 80px 30px;">
+                            <div class="section-title">
+                                <h2>Our Values</h2>
+                                <p>The principles that guide everything we do</p>
+                            </div>
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="images/principles_1.jpg" alt="principles_1">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Community First</h3>
+                                        <p>We prioritize building genuine connections between young creatives. Our events are designed to foster collaboration rather than competition.</p>
+                                        <p>Many participants form lasting friendships and creative partnerships through Nomad. We've seen bands form, art collectives launch, and businesses partner through connections made at our events.</p>
+                                        <p>After each event, we host casual mixers where participants can network in a relaxed environment.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="images/principles_2.jpg" alt="principles_2">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Radical Accessibility</h3>
+                                        <p>No application fees. No commissions on sales. No restrictive selection criteria. We're committed to removing all financial and bureaucratic barriers to participation.</p>
+                                        <p>We provide free materials for artists who can't afford their own, and we offer mentorship for first-time performers who need guidance preparing their sets.</p>
+                                        <p>Our events are held in ADA-compliant venues and we're constantly working to improve accessibility for all attendees.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="images/principles_3.jpg" alt="principles_3">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Youth Leadership</h3>
+                                        <p>Every decision at Nomad is made by our teen leadership team. Adult mentors provide guidance when requested, but the vision and execution are entirely youth-driven.</p>
+                                        <p>Our leadership team members gain real-world experience in event planning, marketing, budgeting, and team management - skills that serve them well in college and beyond.</p>
+                                        <p>We rotate leadership roles regularly to give as many teens as possible the opportunity to develop these valuable skills.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>The Team</h2>
+                                <p>Meet the teens who make Nomad happen</p>
+                            </div>
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>Planning Committee</h3>
+                                        <p>Our 12-person planning team meets weekly to organize all aspects of Nomad events. Members specialize in areas like artist relations, venue logistics, marketing, and volunteer coordination.</p>
+                                        <p>The committee is open to any teen who wants to get involved, regardless of experience level. We provide training for all new members.</p>
+                                        <p>Committee members commit to at least one semester of service, with many staying involved for multiple years.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>Event Volunteers</h3>
+                                        <p>Each event is staffed by 30-50 teen volunteers who handle setup, operations, and cleanup. Volunteer roles include:</p>
+                                        <ul style="margin: 15px 0 15px 20px;">
+                                            <li>Artist check-in</li>
+                                            <li>Stage management</li>
+                                            <li>Vendor assistance</li>
+                                            <li>Guest services</li>
+                                            <li>Photography</li>
+                                        </ul>
+                                        <p>Volunteers can sign up for individual events without long-term commitment.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>Adult Advisors</h3>
+                                        <p>While Nomad is teen-run, we're grateful for support from professional artists, event planners, and community leaders who serve as optional mentors.</p>
+                                        <p>Advisors are available to answer questions and share expertise, but all final decisions remain with the teen leadership team.</p>
+                                        <p>Our advisors come from organizations like the Columbus Arts Council, local music venues, and small business development centers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 50px;">
+                                <a id="contactButton2" class="btn">Join Our Team</a>
+                            </div>
+                        </section>
+                    `;
+                    setupAboutButtons();
+                    setupFooterButtons();
+                    break;
+                    
+                case 'events':
+                    contentDiv.innerHTML = `
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Upcoming Event</h2>
+                                <p>Join us at our next gathering of young creatives</p>
+                            </div>
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>August Nomad</h3>
+                                        <p><strong>Date: </strong>August 16, 2025</p>
+                                        <p><strong>Time: </strong>6:00 PM - 9:00 PM</p>
+                                        <p><strong>Location :</strong>The Green Space by Viewpoint Books</p>
+                                        <p>Nomad is being hosted in downtown Columbus, featuring:</p>
+                                        <ul style="margin: 15px 0 15px 20px;">
+                                            <li>Live music from 4 seperate bands / individuals</li>
+                                            <li>Over 5 separate vendors</li>
+                                            <li>Food trucks and refreshments</li>
+                                        </ul>
+                                        <p>Free admission all weekend. Vendor and performer applications open until July 1.</p>
+                                        <div style="margin-top: 25px;">
+                                            <a id="contactButton3" class="btn" style="margin-left: 15px;">Apply to Participate</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <img src="images/upcoming_nomad_poster.jpg" alt="upcoming_nomad_poster" style="display:block; margin:auto; margin-top:30px; max-width:360px; max-height:480px;">
+                                    </div>  
+                                </div>
+                            </div>
+
+                                
+                        </section>
+
+                        <section class="container" style="background-color: var(--light); padding: 80px 30px;">
+                            <div class="section-title">
+                                <h2>Event Calendar</h2>
+                                <p>Plan your visit to upcoming Nomad events</p>
+                            </div>
+                            
+                            <!-- Google Calendar Embed -->
+                            <div class="google-calendar-container" style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;">
+                                <iframe 
+                                    src="https://calendar.google.com/calendar/embed?src=17526d6a3005032b1928a9a287b8a0e939208d3a1eee05bfe506640b8f924e39%40group.calendar.google.com&ctz=UTC" 
+                                    style="border-width:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                                    frameborder="0" 
+                                    scrolling="no">
+                                </iframe>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 40px;">
+                                <a href="https://calendar.google.com/calendar/embed?src=17526d6a3005032b1928a9a287b8a0e939208d3a1eee05bfe506640b8f924e39%40group.calendar.google.com&ctz=UTC" target="_blank" class="btn">Open Calendar in New Tab</a>
+                            </div>
+                        </section>
+
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Past Events</h2>
+                                <p>Relive our previous gatherings</p>
+                            </div>
+                            
+                            <div style="text-align: center; margin: 50px 0;">
+                                <a href="https://drive.google.com/drive/folders/1ssw8v5HgoeXblv3g_iqcwTRhd-E4t7E-" target="_blank" class="btn">View Past Event Photos & Videos</a>
+                            </div>
+                        </section>
+                    `;
+                    setupEventButtons();
+                    setupFooterButtons();
+                    break;
+                    
+                case 'contact':
+                    contentDiv.innerHTML = `
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Get In Touch</h2>
+                                <p>We'd love to hear from you</p>
+                            </div>
+                            
+                            <div class="contact-container">
+                                <div class="contact-form">
+                                    <iframe
+                                        src="https://docs.google.com/forms/d/e/1FAIpQLScTQEvXQGLgVq4nbuaHJjoR5DrB5BRbgITaDy6a-vD4ZxqssA/viewform?embedded=true"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                                
+                                <div class="contact-info">
+                                    <div class="info-card">
+                                        <h3>Contact Information</h3>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-envelope"></i>
+                                            <div class="info-item-content">
+                                                <h4>General Inquiries</h4>
+                                                <p>info@nomadartcolumbus.com</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-phone"></i>
+                                            <div class="info-item-content">
+                                                <h4>Phone</h4>
+                                                <p>(614) 555-7890</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-clock"></i>
+                                            <div class="info-item-content">
+                                                <h4>Response Time</h4>
+                                                <p>We typically respond to emails within 2-3 business days. For urgent matters, please call.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="info-card">
+                                        <h3>Get Involved</h3>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-users"></i>
+                                            <div class="info-item-content">
+                                                <h4>Volunteer</h4>
+                                                <p>Join our teen planning team or help at events:<br>volunteers@nomadartcolumbus.com</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-music"></i>
+                                            <div class="info-item-content">
+                                                <h4>Perform</h4>
+                                                <p>Apply to perform at our next event:<br>performers@nomadartcolumbus.com</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-store"></i>
+                                            <div class="info-item-content">
+                                                <h4>Vendor Inquiries</h4>
+                                                <p>Reserve a vendor spot:<br>vendors@nomadartcolumbus.com</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="info-item">
+                                            <i class="fas fa-hands-helping"></i>
+                                            <div class="info-item-content">
+                                                <h4>Sponsorships</h4>
+                                                <p>Support our mission:<br>sponsors@nomadartcolumbus.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="container">
+                            <div class="section-title">
+                                <h2>Frequently Asked Questions</h2>
+                            </div>
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>How can I participate as an artist or performer?</h3>
+                                        <p>We welcome all teen creatives to participate! Simply email the appropriate address above with some examples of your work and which event you're interested in. There are no fees or strict selection criteria.</p>
+                                        <p>First-time participants receive priority placement to ensure everyone gets a chance to showcase their talents.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>Is there an age limit for participants?</h3>
+                                        <p>Nomad is specifically for teens ages 13-19. All participants must be within this age range, though attendees of all ages are welcome.</p>
+                                        <p>We occasionally make exceptions for recent high school graduates (up to age 20) who want to participate in their first event after graduation.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3>How is Nomad funded?</h3>
+                                        <p>We operate through a combination of small grants, individual donations, and in-kind support from local businesses. All funding goes directly to event costs like venue rentals, equipment, and marketing.</p>
+                                        <p>Our leadership team and all event staff are volunteers. We never charge participation fees or take commissions on sales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    `;
+                    setupFooterButtons();
+                    break;
+            }
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
